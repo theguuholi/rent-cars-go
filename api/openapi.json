@@ -1,0 +1,17 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "Rent Cars API", "version": "0.1.0", "description": "Browse the body styles in the rental vehicle catalog."},
+  "paths": {
+    "/categories": {"get": {
+      "operationId": "listCategories", "tags": ["Categories"], "summary": "List categories alphabetically",
+      "responses": {
+        "200": {"description": "All vehicle categories sorted by name. An empty catalog returns [].", "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Category"}}}}},
+        "500": {"description": "The catalog could not be read.", "content": {"application/json": {"schema": {"type":"object","required":["error"],"properties":{"error":{"type":"string"}}}}}}
+      }
+    }}
+  },
+  "components": {"schemas": {"Category": {"type": "object", "required": ["name","description"], "properties": {
+    "name": {"type":"string","maxLength":50,"description":"Unique uppercase catalog name.","examples":["HATCHBACK"]},
+    "description": {"type":["string","null"],"maxLength":255,"description":"Optional explanation of the body style.","examples":["Compact car with a rear hatch.",null]}
+  }}}}
+}

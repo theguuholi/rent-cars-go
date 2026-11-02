@@ -1,0 +1,5 @@
+@baseUrl = http://localhost:8081
+
+### List vehicle categories in ascending name order
+GET {{baseUrl}}/categories
+Accept: application/json
